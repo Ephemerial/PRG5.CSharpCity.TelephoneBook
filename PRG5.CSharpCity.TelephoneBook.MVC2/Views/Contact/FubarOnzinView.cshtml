@@ -1,0 +1,65 @@
+﻿@model TelephoneBookViewModel
+
+@{
+    ViewData["Title"] = "FubarOnzinView";
+}
+<fieldset>
+    <dd>Administrator</dd>
+    <dt>@Model.Admin.Fullname</dt>
+    <dd>Telefoon</dd>
+    <dt>@Model.Admin.TelephonNumber</dt>
+</fieldset>
+
+<h1>Contact list (Telephonebook)</h1>
+@if (Model.Everyone.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Everyone.First().FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Everyone.First().LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Everyone.First().TelephonNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Everyone.First().Fullname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Everyone.First().Id)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Everyone)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TelephonNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fullname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
